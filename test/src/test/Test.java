@@ -18,7 +18,7 @@ public class Test {
 
 		Abc test = new Abc();
 		
-		System.out.println("***********1**********");
+		System.out.println("******1****##");
 		Runtime runtime = Runtime.getRuntime();
 		System.out.println("AvailableProcessors: " + runtime.availableProcessors());
 		System.out.println("FreeMemory: " + runtime.freeMemory());
