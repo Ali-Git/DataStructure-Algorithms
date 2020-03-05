@@ -5,7 +5,9 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class StringPermutation {
+// Tushar - O(2^n)
+// https://www.youtube.com/watch?v=xTNFs5KRV_g&t=514s
+public class StringCombination {
 
 	public static void main(String[] args) {
 		// 2 AABC ABCDE
@@ -31,33 +33,39 @@ public class StringPermutation {
 				targetCount[i] = map.get(ch);
 				i++;
 			}
-			printStringPermutation(targetStr, targetCount, res, 0);
+			printStringCombination(targetStr, targetCount, res, 0, 0);
 			System.out.println();
 		}
 
 
 	}
 
-	private static void printStringPermutation(char[] str, int[] count, char[] res, int index) {
+	private static void printStringCombination(char[] str, int[] count, char[] res, int index, int k) {
 		if (res.length == index) {
-			print(res);
 			return;
 		}
-		for (int i = 0; i < str.length; i++) {
+		for (int i = 0+k; i < str.length; i++) {
 			if (count[i] == 0)
 				continue;
 			res[index] = str[i];
+			print(res, index);
 			count[i] = --count[i];
-			printStringPermutation(str, count, res, index + 1);
+			printStringCombination(str, count, res, index + 1, i);
 			count[i] = ++count[i];
 		}
 	}
 
-	private static void print(char[] res) {
-		for (int i = 0; i < res.length; i++) {
+	private static void print(char[] res, int m) {
+		for (int i = 0; i <=m; i++) {
 			System.out.print(res[i]);
 		}
 		System.out.print(" ");
 	}
 
 }
+/*
+1
+AABC
+A AA AAB AABC AAC AB ABC AC B BC C 
+*/
+
